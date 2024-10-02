@@ -7,6 +7,8 @@ import { Thread } from '../models/Thread';
 interface CreateMessageDTO {
     body: string,
     user: User,
+    user_id: number,
+    thread_id: number,
     thread: Thread   
 }
 

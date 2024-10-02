@@ -1,6 +1,8 @@
 import { promises as fs } from 'fs';
 import { Thread } from '../models/Thread';
 import { FileSystemRepo } from './FileSystemRepo';
+import { Message } from '../models/Message';
+import { MessageJsonRepo } from './MessageJsonRepo';
 
 const filePath = './data/threads.json';
 
@@ -20,7 +22,21 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
 
     async getById(id: number): Promise<Thread | null> {
         const threads = await this.readData();
-        return threads.find(thread => thread.id === id) || null;
+        const messageRepo = new MessageJsonRepo();
+        const messages = await messageRepo.readData();
+        const thread = threads.find(thread => thread.id === id) || null;
+
+        console.log(messages);
+
+        if (thread) {
+            const threadMessages = messages.filter(message => message.thread_id === id);
+
+            console.log(threadMessages);
+            
+            thread.messages = threadMessages;
+        }
+
+        return thread;
     }
 
     async create(thread: Omit<Thread, 'id'>): Promise<Thread> {

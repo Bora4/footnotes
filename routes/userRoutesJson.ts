@@ -1,11 +1,13 @@
+// This is a router if you are going to use JSON filesystem as data source
+
 import express from 'express';
-import { UserRepo } from '../src/repos/UserRepo';
-import { createUser } from '../src/usecases/createUser';
-import { updateUser } from '../src/usecases/updateUser';
-import { deleteUser } from '../src/usecases/deleteUser';
+import { UserJsonRepo } from '../src/repos/UserJsonRepo';
+import { createUserJson } from '../src/usecases/createUserJson';
+import { updateUserJson } from '../src/usecases/updateUserJson';
+import { deleteUserJson } from '../src/usecases/deleteUserJson';
 
 const router = express.Router();
-const userRepo = new UserRepo(); // UserRepo here
+const userRepo = new UserJsonRepo();
 
 router.get('/', async (req, res) => {
     try {
@@ -33,7 +35,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const userData = req.body;
     try {
-        const newUser = await createUser(userRepo, userData);
+        const newUser = await createUserJson(userRepo, userData);
         res.status(201).json(newUser);
     } catch (error) {
         res.status(400).json({ message: 'Error creating user', error });
@@ -44,7 +46,7 @@ router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const updatedData = req.body;
     try {
-        const updatedUser = await updateUser(userRepo, Number(id), updatedData);
+        const updatedUser = await updateUserJson(userRepo, Number(id), updatedData);
         if (updatedUser) {
             res.json(updatedUser);
         } else {
@@ -58,7 +60,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const deleted = await deleteUser(userRepo, Number(id));
+        const deleted = await deleteUserJson(userRepo, Number(id));
         if (deleted) {
             res.status(204).send();
         } else {

@@ -1,5 +1,5 @@
 import { FileSystemRepo } from "./FileSystemRepo";
-
+//TODO: delete this
 export interface JsonFileSystemRepo<T> extends FileSystemRepo<T> {
     readData(): Promise<T[]>;
     writeData(data: T[]): Promise<void>;
