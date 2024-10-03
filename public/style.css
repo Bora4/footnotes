@@ -1,8 +1,52 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 50px;
 }
 h1 {
     text-align: center;
     color: #4CAF50;
-  }
+}
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+a:hover {
+    color: #8cc28e
+}
+
+li {
+    list-style-type: none;
+}
+
+.head-row {
+    background-color: #333;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.head-row ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.head-row li {
+    float: left;
+}
+
+.head-row li:hover {
+    color: #8ebdac;
+}
+
+.main-col {
+    padding: 50px;
+}
+
+.body-row {
+    padding: 50px 50px 5px;
+}
+
+.subtext-row {
+    padding-top: 18px;
+    padding-bottom: 9px;
+}

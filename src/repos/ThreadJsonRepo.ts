@@ -26,13 +26,8 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
         const messages = await messageRepo.readData();
         const thread = threads.find(thread => thread.id === id) || null;
 
-        console.log(messages);
-
         if (thread) {
             const threadMessages = messages.filter(message => message.thread_id === id);
-
-            console.log(threadMessages);
-            
             thread.messages = threadMessages;
         }
 
