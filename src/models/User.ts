@@ -4,7 +4,7 @@ import { Thread } from "./Thread";
 
 export interface User extends BaseEntity{
     id: number;
-    nickname: string;
+    username: string;
     email: string;
     password: string;
     created: Date;

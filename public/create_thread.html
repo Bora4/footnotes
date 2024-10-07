@@ -41,13 +41,17 @@
   </header>
   <div class="col main-col">
     <div class="row">
-      <h1>Welcome to FootNotes</h1>
+        <h1>Create a New Thread</h1>
     </div>
-    <div class="row" style="float: right;">
-      <a href="/create_thread.html">Create new thread</a>
+    <div class="row center-row">
+        <div class="center-div">
+            <form action="/threads" method="post">
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="message" placeholder="First Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-      <h2>Hot Threads</h2>
-      <a href="/threads.html">all threads</a>
   </div>
 </body>
 </html>

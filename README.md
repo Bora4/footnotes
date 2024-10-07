@@ -18,7 +18,7 @@ Footnotes is a board like website where people share stories, insights and facts
 # Models
 
 - User
-    - nickname
+    - username
     - email
     - password
     - created

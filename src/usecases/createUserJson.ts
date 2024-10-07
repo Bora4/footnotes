@@ -3,7 +3,7 @@ import { UserJsonRepo } from '../repos/UserJsonRepo';
 
 //TODO: MAYBE change this to 'CreateType'
 interface CreateUserDTO {
-    nickname: string;
+    username: string;
     email: string;
     password: string;
 }

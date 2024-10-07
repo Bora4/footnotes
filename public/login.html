@@ -91,7 +91,7 @@
         <div class="error" id="error-msg"></div>
         <input type="email" id="email" placeholder="Email" required>
         <input type="password" id="password" placeholder="Password" required>
-        <input type="text" id="nickname" placeholder="Nickname" style="display: none;" required>
+        <input type="text" id="username" placeholder="username" style="display: none;" required>
         <div class="remember-me" id="rememberMeContainer">
             <input type="checkbox" id="rememberMe">
             <label for="rememberMe">Remember me</label>
@@ -107,7 +107,7 @@
         const formTitle = document.getElementById('form-title');
         const submitBtn = document.getElementById('submit-btn');
         const toggleLink = document.getElementById('toggle-link');
-        const nicknameField = document.getElementById('nickname');
+        const usernameField = document.getElementById('username');
         const errorMsg = document.getElementById('error-msg');
         const rememberMe = document.getElementById('rememberMe');
         const rememberMeContainer = document.getElementById('rememberMeContainer');
@@ -120,13 +120,13 @@
                 formTitle.textContent = 'Login';
                 submitBtn.textContent = 'Login';
                 toggleLink.textContent = 'Create an account';
-                nicknameField.style.display = 'none';
+                usernameField.style.display = 'none';
                 rememberMeContainer.style.display = 'flex';
             } else {
                 formTitle.textContent = 'Create Account';
                 submitBtn.textContent = 'Create Account';
                 toggleLink.textContent = 'Login';
-                nicknameField.style.display = 'block';
+                usernameField.style.display = 'block';
                 rememberMeContainer.style.display = 'none';
             }
         });
@@ -134,7 +134,7 @@
         submitBtn.addEventListener('click', async () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const nickname = document.getElementById('nickname').value;
+            const username = document.getElementById('username').value;
 
             let url = '';
             let bodyData = {};
@@ -146,7 +146,7 @@
                     login(bodyData)
                 } else {
                     url = '/users';
-                    bodyData = { email, password, nickname };
+                    bodyData = { email, password, username };
                     const response = await fetch(url, {
                         method: 'POST',
                         headers: {
@@ -156,7 +156,7 @@
                     });
                     const data = await response.json();
                     if (response.ok) {
-                        delete bodyData.nickname;
+                        delete bodyData.username;
                         login(bodyData);
                     } else {
                         errorMsg.textContent = data.message || 'Error occurred';

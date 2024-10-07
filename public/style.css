@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 h1 {
     text-align: center;
@@ -17,6 +18,34 @@ a:hover {
 
 li {
     list-style-type: none;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4cae4c;
 }
 
 .head-row {
@@ -40,6 +69,14 @@ li {
 
 .main-col {
     padding: 50px;
+}
+
+.center-div {
+    width: 50%;
+}
+
+.center-row {
+    justify-content: space-evenly;
 }
 
 .body-row {

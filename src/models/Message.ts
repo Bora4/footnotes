@@ -10,6 +10,6 @@ export interface Message extends BaseEntity{
     created: Date;
     modified: Date;
     deleted?: Date;
-    user: User;
-    thread: Thread;
+    // user: User;
+    // thread: Thread;
 }

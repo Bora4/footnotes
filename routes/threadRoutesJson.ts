@@ -4,12 +4,15 @@ import express from 'express';
 import path from 'path';
 import { ThreadJsonRepo } from '../src/repos/ThreadJsonRepo';
 // import { viewThreadsJson } from '../src/usecases/viewThreadsJson';
-// import { createThreadJson } from '../src/usecases/createThreadJson';
+import { createThreadJson } from '../src/usecases/createThreadJson';
+import { createMessageJson } from '../src/usecases/createMessageJson';
+import { MessageJsonRepo } from '../src/repos/MessageJsonRepo';
 // import { updateThreadJson } from '../src/usecases/updateThreadJson';
 // import { deleteThreadJson } from '../src/usecases/deleteThreadJson';
 
 const router = express.Router();
 const threadRepo = new ThreadJsonRepo();
+const messageRepo = new MessageJsonRepo();
 
 router.get('/', async (req, res) => {
     try { 
@@ -34,15 +37,32 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// router.post('/', async (req, res) => {
-//     const threadData = req.body;
-//     try {
-//         const newThread = await createThreadJson(threadRepo, threadData);
-//         res.status(201).json(newThread);
-//     } catch (error) {
-//         res.status(400).json({ message: 'Error creating thread', error });
-//     }
-// });
+router.post('/', async (req, res) => {
+    const formData = req.body;
+    const userData = req.session.user;
+    try {
+        if(formData && userData){
+
+            let threadData = {
+                title: formData.title,
+                user_id: userData.id,
+                messages: []
+            };
+            const newThread = await createThreadJson(threadRepo, threadData);
+
+            let messageData = {
+                user_id: userData.id,
+                body: formData.message,
+                thread_id: newThread.id,
+            }
+            const newMessage = await createMessageJson(messageRepo, messageData);
+
+            res.status(201).json(newThread);
+        }
+    } catch (error) {
+        res.status(400).json({ message: 'Error creating thread', error });
+    }
+});
 
 // router.put('/:id', async (req, res) => {
 //     const { id } = req.params;

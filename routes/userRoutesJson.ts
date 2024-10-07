@@ -6,7 +6,6 @@ import { createUserJson } from '../src/usecases/createUserJson';
 import { updateUserJson } from '../src/usecases/updateUserJson';
 import { deleteUserJson } from '../src/usecases/deleteUserJson';
 import { loginUserJson } from '../src/usecases/loginUserJson';
-import { Session } from 'express-session';
 
 const router = express.Router();
 const userRepo = new UserJsonRepo();
@@ -48,13 +47,24 @@ router.post('/login', async (req, res) => {
     const userData = req.body;
     try {
         const user = await loginUserJson(userRepo, userData);
-        if(user){
-            
+        if (user) {
             req.session.user = user;
         }
         res.status(200).json(user);
-    } catch (error){
-        res.status(400).json({ message: 'Could not log in', error});
+    } catch (error) {
+        res.status(400).json({ message: 'Could not log in', error });
+    }
+})
+
+router.get('/get-auth', async (req, res) => {
+    try {
+        if (req.session.user) {
+            res.status(200).json({ isAuthenticated: true, userId: req.session.user.id, username: req.session.user.username });
+        } else {
+            res.status(200).json({ isAuthenticated: false });
+        }
+    } catch (error) {
+        res.status(404).json({ message: 'Error', error });
     }
 })
 
