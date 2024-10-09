@@ -45,9 +45,9 @@
     </div>
     <div class="row center-row">
         <div class="center-div">
-            <form action="/threads" method="post">
-                <input type="text" name="title" placeholder="Title" required>
-                <textarea name="message" placeholder="First Message" required></textarea>
+            <form id="thread-form">
+                <input type="text" id="title" placeholder="Title" required>
+                <textarea id="body" placeholder="First Message" required></textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -55,3 +55,34 @@
   </div>
 </body>
 </html>
+
+<script>
+  document.getElementById('thread-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const messageBody = document.getElementById('body').value;
+
+    const data = {
+        title: title,
+        body: messageBody
+    };
+
+    fetch('/threads', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Thread created successfully:', result); //TODO: delete me
+        window.location.href = `/thread.html?id=${result.id}`; //TODO: Check
+    })
+    .catch(error => {
+        console.error(error);
+    });
+});
+
+</script>

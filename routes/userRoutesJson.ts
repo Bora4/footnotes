@@ -34,6 +34,7 @@ const userRepo = new UserJsonRepo();
 // });
 
 router.post('/', async (req, res) => {
+    //TODO: add checks here
     const userData = req.body;
     try {
         const newUser = await createUserJson(userRepo, userData);

@@ -1,18 +1,17 @@
 import { promises as fs } from 'fs';
 import { Thread } from '../models/Thread';
-import { FileSystemRepo } from './FileSystemRepo';
-import { Message } from '../models/Message';
+import { Repo } from './Repo';
 import { MessageJsonRepo } from './MessageJsonRepo';
 
 const filePath = './data/threads.json';
 
-export class ThreadJsonRepo implements FileSystemRepo<Thread> {
-    async readData(): Promise<Thread[]> {
+export class ThreadJsonRepo implements Repo<Thread> {
+    private async readData(): Promise<Thread[]> {
         const data = await fs.readFile(filePath, 'utf-8');
         return JSON.parse(data);
     }
 
-    async writeData(threads: Thread[]): Promise<void> {
+    private async writeData(threads: Thread[]): Promise<void> {
         await fs.writeFile(filePath, JSON.stringify(threads, null, 2), 'utf-8');
     }
 
@@ -21,9 +20,9 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
     }
 
     async getById(id: number): Promise<Thread | null> {
-        const threads = await this.readData();
+        const threads = await this.getAll();
         const messageRepo = new MessageJsonRepo();
-        const messages = await messageRepo.readData();
+        const messages = await messageRepo.getThreadMessages(id);
         const thread = threads.find(thread => thread.id === id) || null;
 
         if (thread) {
@@ -35,7 +34,7 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
     }
 
     async create(thread: Omit<Thread, 'id'>): Promise<Thread> {
-        const threads = await this.readData();
+        const threads = await this.getAll();
 
         const newId = threads.length > 0 ? threads[threads.length - 1].id + 1 : 1;
 
@@ -47,7 +46,7 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
     }
 
     async update(id: number, item: Partial<Omit<Thread, 'id'>>): Promise<Thread | null> {
-        const threads = await this.readData();
+        const threads = await this.getAll();
         const threadIndex = threads.findIndex(thread => thread.id === id);
 
         if (threadIndex === -1) {
@@ -62,7 +61,7 @@ export class ThreadJsonRepo implements FileSystemRepo<Thread> {
     }
 
     async delete(id: number): Promise<boolean> {
-        const threads = await this.readData();
+        const threads = await this.getAll();
         const threadIndex = threads.findIndex(thread => thread.id === id);
 
         if (threadIndex === -1) {

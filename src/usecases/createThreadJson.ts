@@ -6,7 +6,6 @@ import { Message } from '../models/Message';
 interface CreateThreadDTO {
     user_id: number;
     title: string;
-    messages: Message[];
 }
 
 export const createThreadJson = async (threadRepo: ThreadJsonRepo, threadData: CreateThreadDTO): Promise<Thread> => {

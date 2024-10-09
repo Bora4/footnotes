@@ -2,9 +2,8 @@ import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import routes from './routes';
-import crypto from 'crypto';
 import session from 'express-session';
-import { User } from './src/models/User';
+import { UserResponse } from './src/models/User';
 
 const app: Application = express();
 const PORT = 3000;
@@ -32,6 +31,6 @@ app.listen(PORT, () => {
 
 declare module "express-session" {
     interface SessionData {
-        user: User;
+        user: UserResponse;
     }
 }

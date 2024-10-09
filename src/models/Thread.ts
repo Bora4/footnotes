@@ -8,5 +8,8 @@ export interface Thread extends BaseEntity{
     created: Date;
     modified: Date;
     deleted?: Date;
-    messages: Message[];
+
+    /** @virtual */
+    // This should only be populated dynamically
+    messages?: Message[];
 }

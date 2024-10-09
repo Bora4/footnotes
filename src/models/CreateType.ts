@@ -1,0 +1,1 @@
+//CreateType<T> is a type where 'id' is omitted from T

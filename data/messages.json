@@ -13,5 +13,44 @@
     "created": "2024-10-07T17:08:17.185Z",
     "modified": "2024-10-07T17:08:17.185Z",
     "id": 2
+  },
+  {
+    "user_id": 1,
+    "thread_id": 3,
+    "created": "2024-10-09T10:50:04.957Z",
+    "modified": "2024-10-09T10:50:04.957Z",
+    "id": 3
+  },
+  {
+    "user_id": 1,
+    "body": "This is the first message",
+    "thread_id": 4,
+    "created": "2024-10-09T13:00:14.618Z",
+    "modified": "2024-10-09T13:00:14.618Z",
+    "id": 4
+  },
+  {
+    "user_id": 1,
+    "body": "This is the first message",
+    "thread_id": 5,
+    "created": "2024-10-09T13:00:27.430Z",
+    "modified": "2024-10-09T13:00:27.430Z",
+    "id": 5
+  },
+  {
+    "user_id": 1,
+    "body": "This is the first message",
+    "thread_id": 6,
+    "created": "2024-10-09T13:03:34.448Z",
+    "modified": "2024-10-09T13:03:34.448Z",
+    "id": 6
+  },
+  {
+    "user_id": 1,
+    "body": "My new message",
+    "thread_id": 7,
+    "created": "2024-10-09T13:03:53.881Z",
+    "modified": "2024-10-09T13:03:53.881Z",
+    "id": 7
   }
 ]

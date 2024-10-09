@@ -1,6 +1,6 @@
 import { BaseEntity } from "./BaseEntity";
 import { Thread } from "./Thread";
-import { User } from "./User";
+import { UserResponse } from "./User";
 
 export interface Message extends BaseEntity{
     id: number,
@@ -10,6 +10,9 @@ export interface Message extends BaseEntity{
     created: Date;
     modified: Date;
     deleted?: Date;
-    // user: User;
-    // thread: Thread;
+
+    /** @virtual */
+    // These should only be populated dynamically
+    user?: UserResponse;
+    thread?: Thread;
 }

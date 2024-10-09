@@ -1,7 +1,5 @@
 import { MessageJsonRepo } from '../repos/MessageJsonRepo';
 import { Message } from '../models/Message';
-import { User } from '../models/User';
-import { Thread } from '../models/Thread';
 
 //TODO: MAYBE change this to 'CreateType'
 interface CreateMessageDTO {

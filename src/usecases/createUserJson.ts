@@ -1,4 +1,4 @@
-import { User } from '../models/User';
+import { User, UserResponse } from '../models/User';
 import { UserJsonRepo } from '../repos/UserJsonRepo';
 
 //TODO: MAYBE change this to 'CreateType'
@@ -8,7 +8,7 @@ interface CreateUserDTO {
     password: string;
 }
 
-export const createUserJson = async (userRepo: UserJsonRepo, userData: CreateUserDTO): Promise<User> => {
+export const createUserJson = async (userRepo: UserJsonRepo, userData: CreateUserDTO): Promise<UserResponse> => {
     const newUser = {
         ...userData,
         created: new Date(),

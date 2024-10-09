@@ -15,7 +15,7 @@ const threadRepo = new ThreadJsonRepo();
 const messageRepo = new MessageJsonRepo();
 
 router.get('/', async (req, res) => {
-    try { 
+    try {
         const threads = await threadRepo.getAll();
         res.json(threads);
     } catch (error) {
@@ -40,25 +40,29 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const formData = req.body;
     const userData = req.session.user;
+    if (!userData) {
+        // Maybe this could be changed to a json response
+        return res.redirect('/users/login');
+    }
+    if (!formData) {
+        res.status(400).json({ message: 'No data found' });
+    }
     try {
-        if(formData && userData){
 
-            let threadData = {
-                title: formData.title,
-                user_id: userData.id,
-                messages: []
-            };
-            const newThread = await createThreadJson(threadRepo, threadData);
+        let threadData = {
+            title: formData.title,
+            user_id: userData.id,
+        };
+        const newThread = await createThreadJson(threadRepo, threadData);
 
-            let messageData = {
-                user_id: userData.id,
-                body: formData.message,
-                thread_id: newThread.id,
-            }
-            const newMessage = await createMessageJson(messageRepo, messageData);
-
-            res.status(201).json(newThread);
+        let messageData = {
+            user_id: userData.id,
+            body: formData.body,
+            thread_id: newThread.id,
         }
+        await createMessageJson(messageRepo, messageData);
+
+        res.status(201).json(newThread);
     } catch (error) {
         res.status(400).json({ message: 'Error creating thread', error });
     }
