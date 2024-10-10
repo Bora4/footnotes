@@ -51,11 +51,30 @@ router.post('/login', async (req, res) => {
         if (user) {
             req.session.user = user;
         }
+        if (userData.rememberMe) {
+            res.cookie('rememberMe', userData, {
+                maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+                httpOnly: true, 
+                secure: process.env.NODE_ENV === 'production'  // Only send cookie over HTTPS in production
+            });
+        }
         res.status(200).json(user);
     } catch (error) {
         res.status(400).json({ message: 'Could not log in', error });
     }
 })
+router.post('/logout', async (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: 'Error logging out', error: err });
+        }
+
+        res.clearCookie('rememberMe');
+
+        res.status(200).json({ message: 'Logged out successfully' });
+    });
+});
+
 
 router.get('/get-auth', async (req, res) => {
     try {

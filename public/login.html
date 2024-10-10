@@ -135,13 +135,14 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const username = document.getElementById('username').value;
+            const rememberMe = document.getElementById('rememberMe').value == 'on' ? true : false;
 
             let url = '';
             let bodyData = {};
 
             try {
                 if (isLogin) {
-                    bodyData = { email, password, };
+                    bodyData = { email, password, rememberMe };
                     login(bodyData)
                 } else {
                     url = '/users';

@@ -7,6 +7,7 @@ import { ThreadJsonRepo } from '../src/repos/ThreadJsonRepo';
 import { createThreadJson } from '../src/usecases/createThreadJson';
 import { createMessageJson } from '../src/usecases/createMessageJson';
 import { MessageJsonRepo } from '../src/repos/MessageJsonRepo';
+import { viewThreadsJson } from '../src/usecases/viewThreadsJson';
 // import { updateThreadJson } from '../src/usecases/updateThreadJson';
 // import { deleteThreadJson } from '../src/usecases/deleteThreadJson';
 
@@ -16,7 +17,7 @@ const messageRepo = new MessageJsonRepo();
 
 router.get('/', async (req, res) => {
     try {
-        const threads = await threadRepo.getAll();
+        const threads = await viewThreadsJson(threadRepo);
         res.json(threads);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching threads', error });
@@ -41,8 +42,8 @@ router.post('/', async (req, res) => {
     const formData = req.body;
     const userData = req.session.user;
     if (!userData) {
-        // TODO: change to a json response
-        return res.redirect('back');
+        res.status(401).json({ message: 'User not found!'});
+        return; // This is here to silence another error
     }
     if (!formData) {
         res.status(400).json({ message: 'No data found' });

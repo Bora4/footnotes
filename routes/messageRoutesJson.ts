@@ -36,8 +36,8 @@ router.post('/', async (req, res) => {
     const formData = req.body;
     const userData = req.session.user;
     if (!userData) {
-        // TODO: change to a json response
-        return res.redirect('back');
+        res.status(401).json({ message: 'User not found!'});
+        return; // This is here to silence another error
     }
     if (!formData) {
         res.status(400).json({ message: 'No data found' });

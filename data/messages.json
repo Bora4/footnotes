@@ -224,6 +224,32 @@
     "thread_id": 7,
     "body": "bla bla bla",
     "created": "2024-10-10T13:09:47.104Z",
-    "modified": "2024-10-10T13:09:47.104Z"
+    "modified": "2024-10-10T13:09:47.104Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 19,
+    "user_id": 2,
+    "thread_id": 7,
+    "body": "Yes i agree",
+    "created": "2024-10-10T15:34:20.192Z",
+    "modified": "2024-10-10T15:34:20.192Z",
+    "user": {
+      "id": 2,
+      "email": "test@mail.com",
+      "username": "seconduser"
+    }
+  },
+  {
+    "id": 20,
+    "user_id": 2,
+    "thread_id": 8,
+    "body": "mhhhhmmm",
+    "created": "2024-10-10T15:35:37.909Z",
+    "modified": "2024-10-10T15:35:37.909Z"
   }
 ]
