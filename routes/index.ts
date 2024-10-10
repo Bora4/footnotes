@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import userRoutesJson from './userRoutesJson';
 import threadRoutesJson from './threadRoutesJson';
+import messageRoutesJson from './messageRoutesJson';
 
 const router = Router();
 
@@ -11,5 +12,7 @@ router.use('/users', userRoutesJson);
 // router.use('/users', userRoutesMongo);
 
 router.use('/threads', threadRoutesJson);
+
+router.use('/messages', messageRoutesJson)
 
 export default router;

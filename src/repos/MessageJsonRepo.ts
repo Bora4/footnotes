@@ -38,18 +38,21 @@ export class MessageJsonRepo implements Repo<Message> {
     }
 
     async getThreadMessages(thread_id: number): Promise<Message[]> {
-        const allMessages = await this.getAll();
+    const allMessages = await this.getAll();
 
-        const threadMessages = allMessages.filter(message => message.thread_id === thread_id);
+    const threadMessages = allMessages.filter(message => {
+        return message.thread_id === thread_id;
+    });
 
-        return threadMessages;
-    }
+    return threadMessages;
+}
 
     async create(message: Omit<Message, 'id'>): Promise<Message> {
         const messages = await this.getAll();
 
         const newId = messages.length > 0 ? messages[messages.length - 1].id + 1 : 1;
-        const newMessage = { ...message, id: newId };
+
+        const newMessage = new Message(newId, message.user_id, message.thread_id, message.body);
 
         messages.push(newMessage);
 
@@ -65,6 +68,7 @@ export class MessageJsonRepo implements Repo<Message> {
             return null;
         }
 
+        //TODO: change this to new Message();
         const updatedMessage = { ...messages[messageIndex], ...item, modified: new Date() };
 
         messages[messageIndex] = updatedMessage;

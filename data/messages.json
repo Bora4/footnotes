@@ -5,21 +5,36 @@
     "thread_id": 1,
     "body": "lorem ipsum",
     "created": "2024-2-10T40:43:00.000Z",
-    "modified": "2024-2-10T40:43:00.000Z"
+    "modified": "2024-2-10T40:43:00.000Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
     "thread_id": 2,
     "created": "2024-10-07T17:08:17.185Z",
     "modified": "2024-10-07T17:08:17.185Z",
-    "id": 2
+    "id": 2,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
     "thread_id": 3,
     "created": "2024-10-09T10:50:04.957Z",
     "modified": "2024-10-09T10:50:04.957Z",
-    "id": 3
+    "id": 3,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
@@ -27,7 +42,12 @@
     "thread_id": 4,
     "created": "2024-10-09T13:00:14.618Z",
     "modified": "2024-10-09T13:00:14.618Z",
-    "id": 4
+    "id": 4,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
@@ -35,7 +55,12 @@
     "thread_id": 5,
     "created": "2024-10-09T13:00:27.430Z",
     "modified": "2024-10-09T13:00:27.430Z",
-    "id": 5
+    "id": 5,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
@@ -43,7 +68,12 @@
     "thread_id": 6,
     "created": "2024-10-09T13:03:34.448Z",
     "modified": "2024-10-09T13:03:34.448Z",
-    "id": 6
+    "id": 6,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
   },
   {
     "user_id": 1,
@@ -51,6 +81,149 @@
     "thread_id": 7,
     "created": "2024-10-09T13:03:53.881Z",
     "modified": "2024-10-09T13:03:53.881Z",
-    "id": 7
+    "id": 7,
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 8,
+    "user_id": 1,
+    "thread_id": "7",
+    "body": "this is a reply to this thread",
+    "created": "2024-10-10T12:44:28.768Z",
+    "modified": "2024-10-10T12:44:28.768Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 9,
+    "user_id": 1,
+    "thread_id": "7",
+    "body": "this is a reply to this thread",
+    "created": "2024-10-10T12:44:28.771Z",
+    "modified": "2024-10-10T12:44:28.771Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 10,
+    "user_id": 1,
+    "thread_id": "7",
+    "body": "this is a reply to this thread",
+    "created": "2024-10-10T12:44:40.736Z",
+    "modified": "2024-10-10T12:44:40.736Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 11,
+    "user_id": 1,
+    "thread_id": "7",
+    "body": "this is a reply to this thread",
+    "created": "2024-10-10T12:44:40.739Z",
+    "modified": "2024-10-10T12:44:40.739Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 12,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "testing",
+    "created": "2024-10-10T13:03:17.571Z",
+    "modified": "2024-10-10T13:03:17.571Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 13,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "testing",
+    "created": "2024-10-10T13:03:23.477Z",
+    "modified": "2024-10-10T13:03:23.477Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 14,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "testest",
+    "created": "2024-10-10T13:04:38.781Z",
+    "modified": "2024-10-10T13:04:38.781Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 15,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "testest",
+    "created": "2024-10-10T13:04:38.785Z",
+    "modified": "2024-10-10T13:04:38.785Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 16,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "newww",
+    "created": "2024-10-10T13:06:20.534Z",
+    "modified": "2024-10-10T13:06:20.534Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 17,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "newww",
+    "created": "2024-10-10T13:06:20.538Z",
+    "modified": "2024-10-10T13:06:20.538Z",
+    "user": {
+      "id": 1,
+      "email": "bora.tosyali@gmail.com",
+      "username": "hndrxx"
+    }
+  },
+  {
+    "id": 18,
+    "user_id": 1,
+    "thread_id": 7,
+    "body": "bla bla bla",
+    "created": "2024-10-10T13:09:47.104Z",
+    "modified": "2024-10-10T13:09:47.104Z"
   }
 ]

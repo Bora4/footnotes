@@ -42,7 +42,19 @@
     <div class="col main-col">
 
         <h1 id="thread-title"></h1>
-        <ul id="messages-list"></ul>
+        <div style="float: right;">
+            <button id="reply" style="margin-top: -20px;">Reply to the thread</button>
+        </div>
+        <ul id="messages-list" style="margin-top: 60px"></ul>
+    </div>
+
+    <div id="reply-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reply to Thread</h2>
+            <textarea id="reply-message" placeholder="Write your reply here..." rows="4" cols="50"></textarea>
+            <button id="submit-reply">Submit Reply</button>
+        </div>
     </div>
 
     <script>
@@ -54,14 +66,31 @@
                 .then(response => response.json())
                 .then(thread => {
                     if (thread) {
-                        document.getElementById('document-title').textContent = thread.title
+                        document.getElementById('document-title').textContent = thread.title;
                         document.getElementById('thread-title').textContent = thread.title;
+
                         const messagesList = document.getElementById('messages-list');
+
                         thread.messages.forEach(message => {
-                            console.log(message);
-                            const li = document.createElement('li');
-                            li.textContent = message.body;
-                            messagesList.appendChild(li);
+                            const messageContainer = document.createElement('div');
+                            messageContainer.classList.add('message-container');
+
+                            const username = document.createElement('span');
+                            username.classList.add('message-username');
+                            username.textContent = message.user.username;
+                            messageContainer.appendChild(username);
+
+                            const date = document.createElement('span');
+                            date.classList.add('message-date');
+                            date.textContent = new Date(message.created).toLocaleString();
+                            messageContainer.appendChild(date);
+
+                            const body = document.createElement('p');
+                            body.classList.add('message-body');
+                            body.textContent = message.body;
+                            messageContainer.appendChild(body);
+
+                            messagesList.appendChild(messageContainer);
                         });
                     } else {
                         document.getElementById('thread-title').textContent = 'Thread not found';
@@ -71,6 +100,63 @@
         } else {
             document.getElementById('thread-title').textContent = 'No thread ID provided';
         }
+
+        const modal = document.getElementById('reply-modal');
+        const btn = document.getElementById('reply');
+        const closeSpan = document.getElementsByClassName('close')[0];
+        const submitReplyBtn = document.getElementById('submit-reply');
+
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        }
+
+        closeSpan.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        submitReplyBtn.onclick = function () {
+            const replyMessage = document.getElementById('reply-message').value;
+
+            if (replyMessage && threadId) {
+                const replyData = {
+                    thread_id: threadId,
+                    body: replyMessage,
+                };
+
+                fetch(`/messages`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(replyData),
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Failed to post reply');
+                        }
+                    })
+                    .then(data => {
+                        alert('Reply posted successfully!');
+                        modal.style.display = 'none';
+                        location.reload();
+                    })
+                    .catch(error => {
+                        alert('Failed to post reply');
+                        console.error('Error:', error);
+                    });
+            } else {
+                alert('Please write a message to reply.');
+            }
+        };
+
     </script>
 </body>
 
