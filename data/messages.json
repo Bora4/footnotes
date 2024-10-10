@@ -250,6 +250,45 @@
     "thread_id": 8,
     "body": "mhhhhmmm",
     "created": "2024-10-10T15:35:37.909Z",
-    "modified": "2024-10-10T15:35:37.909Z"
+    "modified": "2024-10-10T15:35:37.909Z",
+    "user": {
+      "id": 2,
+      "email": "test@mail.com",
+      "username": "seconduser"
+    }
+  },
+  {
+    "id": 21,
+    "user_id": 2,
+    "thread_id": 8,
+    "body": "hello",
+    "created": "2024-10-10T15:56:17.442Z",
+    "modified": "2024-10-10T15:56:17.442Z",
+    "user": {
+      "id": 2,
+      "email": "test@mail.com",
+      "username": "seconduser"
+    }
+  },
+  {
+    "id": 22,
+    "user_id": 3,
+    "thread_id": 9,
+    "body": "12345",
+    "created": "2024-10-10T15:56:55.417Z",
+    "modified": "2024-10-10T15:56:55.417Z",
+    "user": {
+      "id": 3,
+      "email": "newguy@mail.com",
+      "username": "myworld"
+    }
+  },
+  {
+    "id": 23,
+    "user_id": 2,
+    "thread_id": 9,
+    "body": "5432",
+    "created": "2024-10-10T16:24:21.283Z",
+    "modified": "2024-10-10T16:24:21.283Z"
   }
 ]

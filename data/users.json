@@ -18,5 +18,13 @@
     "threads": [],
     "messages": [],
     "id": 2
+  },
+  {
+    "id": 3,
+    "email": "newguy@mail.com",
+    "username": "myworld",
+    "password": "321321",
+    "created": "2024-10-10T15:56:44.730Z",
+    "modified": "2024-10-10T15:56:44.730Z"
   }
 ]

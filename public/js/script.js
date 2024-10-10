@@ -1,7 +1,9 @@
 fetch('/users/get-auth').then(response => response.json()).then(data => {
+  const login = document.getElementById('login');
+  const createThread = document.getElementById('create-thread');
+  const replyButton = document.getElementById('reply');
   if (data.isAuthenticated) {
-    login = document.getElementById('login');
-    createThread = document.getElementById('create-thread');
+
     login.textContent = 'Logout';
     login.addEventListener('click', () => {
       fetch('/users/logout', {
@@ -19,12 +21,24 @@ fetch('/users/get-auth').then(response => response.json()).then(data => {
           console.error('Error during logout:', error);
         });
     });
-    if(createThread){
+    if (createThread) {
       createThread.textContent = 'Create a new thread';
       createThread.href = '/create_thread.html';
     }
   } else {
     login.textContent = 'Login';
+    if(replyButton){
+
+      replyButton.disabled = true;
+      replyButton.style.cursor = 'not-allowed';
+      replyButton.title = "You need to be logged in to reply";
+    }
+    if(createThread){
+
+      createThread.href = 'javascript:void(0)';
+      createThread.style.cursor = 'not-allowed';
+      createThread.textContent = "You need to be logged in to create a thread";
+    }
   }
 }).catch(error => {
   console.error('Error fetching session data: ', error);
