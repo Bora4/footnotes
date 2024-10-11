@@ -2,7 +2,7 @@
 
 # What is Footnotes?
 
-Footnotes is a board like website where people share stories, insights and facts about football (soccer) in threads. Inspired by the “dictionary culture” of oldschool Turkish internet websites like “eksisozluk”. Website aims to reach the Turkish audience since this format combined with its football theme would only get attention in across Turkish audience.
+Footnotes is a simple messageboard. Inspired by the “dictionary culture” of oldschool Turkish internet websites like “eksisozluk".
 
 # Features
 
